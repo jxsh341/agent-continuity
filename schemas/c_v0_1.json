@@ -1,0 +1,27 @@
+{
+  "schema_version": "C-v0.1",
+  "description": "Frozen structured continuity state. Edit freeze: this schema must not change during Stage 0/1; changes require a schema_version bump and protocol amendment.",
+  "categories": ["goals", "tasks", "decisions", "entities", "facts", "events", "failures", "dependencies"],
+  "record_fields": {
+    "goals": ["id", "description"],
+    "tasks": ["id", "description", "status", "files"],
+    "decisions": ["id", "decision", "reason", "status"],
+    "entities": ["id", "name", "type", "description"],
+    "facts": ["id", "fact"],
+    "events": ["id", "event", "session"],
+    "failures": ["id", "signature", "description", "status"],
+    "dependencies": ["id", "description"]
+  },
+  "current_state_fields": ["branch", "implemented_features", "known_bugs", "tests_status", "active_work"],
+  "truncation_priority": ["current_state", "failures", "decisions", "tasks", "dependencies", "goals", "facts", "entities", "events"],
+  "truncation_rule": "Serialize categories in truncation_priority order. Within a category, keep items in emitted order while they fit. Whole categories that do not fit at all are dropped; partially fitting categories are truncated item-wise. All removals recorded in build_context provenance.",
+  "extractor": {
+    "prompt_version": "c-extraction-v1",
+    "rules": [
+      "Extract only information explicitly supported by the transcript",
+      "Do not infer undocumented facts or invent decisions",
+      "No advice, no meta-commentary",
+      "Output must be valid JSON matching the schema"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "provider": "stub",
+  "model": "stub-v0",
+  "temperature": 0.0,
+  "top_p": 1.0,
+  "max_tokens": 4096,
+  "context_budget": 4096,
+  "conditions": ["A", "B", "C", "D"],
+  "seeds": [1, 2],
+  "sessions": 2,
+  "benchmark_version": "0.1.0-stage0"
+}

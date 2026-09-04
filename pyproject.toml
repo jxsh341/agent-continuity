@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agent-continuity-research"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    # Pinned, editable, EXTERNAL agent framework. Do not copy SDK source
+    # into this repo. See configs/framework_pin.json for the exact commit.
+    # Installed from: C:/Users/user/software-agent-sdk @ cca903c
+    "openhands-sdk==1.44.1",
+    "openhands-tools==1.44.1",
+    "openhands-workspace==1.44.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+include = ["agent*", "continuity*", "conditions*", "evaluation*", "benchmark*", "extractors*", "serialization*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

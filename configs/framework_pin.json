@@ -1,0 +1,31 @@
+{
+  "agent_framework": "OpenHands Software Agent SDK",
+  "repository": "https://github.com/OpenHands/software-agent-sdk.git",
+  "local_path": "C:/Users/user/software-agent-sdk",
+  "commit": "cca903c808f7d954f1749a1a91890476d2f0a107",
+  "sdk_version": "1.44.1",
+  "installed_packages": [
+    "openhands-sdk (editable)",
+    "openhands-tools (editable)",
+    "openhands-workspace (editable)"
+  ],
+  "pinned_on": "2026-08-31",
+  "note": "Pinned via editable install of the local clone at the commit above. The clone must stay clean (git status empty). Do not modify the SDK; all experiment logic lives in this repository.",
+  "mem0": {
+    "version": "2.0.19",
+    "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+    "local_path": "C:/Users/user/mem0",
+    "install": "editable",
+    "platform": "self-hosted (Mem0 Platform NOT used)",
+    "vector_store": "qdrant local on-disk",
+    "embedder": "huggingface sentence-transformers/all-MiniLM-L6-v2 (384d, local, deterministic)"
+  },
+  "shared_extractor": {
+    "model": "nvidia/nemotron-3-ultra-550b-a55b",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 2048,
+    "shared_by": ["B", "C"],
+    "selected_by": "scripts/probe_extractors.py"
+  }
+}
