@@ -64,11 +64,28 @@ def make_evaluator():
     return _eval
 
 
-def run_one(condition: str, budget: int) -> dict:
+def git_state() -> dict:
+    r = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
+                       capture_output=True, text=True)
+    s = subprocess.run(["git", "status", "--short"], cwd=ROOT,
+                       capture_output=True, text=True)
+    return {"commit": r.stdout.strip(), "dirty": bool(s.stdout.strip())}
+
+
+def run_one(condition: str, budget: int, seed_run: int) -> dict:
     config = ModelConfig.from_env()
     pin = json.loads((ROOT / "configs" / "framework_pin.json").read_text())
     agent = OpenHandsCodingAgent(config, framework_commit=pin["commit"])
     runner = ExperimentRunner(agent, RESULTS, framework_pin=pin)
+
+    g = git_state()
+    if g["dirty"]:
+        # results/ is gitignored, so dirtiness here means tracked source
+        # changed since the pinned baseline. Fail loudly, not silently.
+        raise RuntimeError(
+            f"Repository dirty before {condition}/{budget}/seed{seed_run}: "
+            "canonical runs require a clean tracked tree."
+        )
 
     seed = Path(tempfile.mkdtemp(prefix="s04_seed_"))
     make_seed(seed)
@@ -88,7 +105,7 @@ def run_one(condition: str, budget: int) -> dict:
             leaked["decision_leaked_to_repo"] = contamination_scan(ws)
 
     summary = runner.run(
-        RunConfig(condition=condition, context_budget=budget, run_seed=1),
+        RunConfig(condition=condition, context_budget=budget, run_seed=seed_run),
         tasks=[
             f"The workspace root is: {workspace}\nUse it verbatim (absolute Windows path) as the tool path prefix.\n\n{TASK_S1}",
             f"The workspace root is: {workspace}\nUse it verbatim (absolute Windows path) as the tool path prefix.\n\n{TASK_S2}",
@@ -106,6 +123,8 @@ def run_one(condition: str, budget: int) -> dict:
         "run_id": summary["run_id"],
         "condition": condition,
         "budget": budget,
+        "seed": seed_run,
+        "experiment_commit": g["commit"],
         "s1_visible_tests_passed": s1["evaluation"]["passed"],
         "s2_all_tests_passed": s2["evaluation"]["passed"],
         "decision_leaked_to_repo": leaked.get("decision_leaked_to_repo", False),
@@ -139,15 +158,17 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--condition", required=True, choices=list("ABCD"))
     ap.add_argument("--budget", type=int, required=True)
+    ap.add_argument("--seed", type=int, default=1)
     a = ap.parse_args()
 
     RESULTS.mkdir(parents=True, exist_ok=True)
-    entry = run_one(a.condition, a.budget)
+    entry = run_one(a.condition, a.budget, a.seed)
 
     report = json.loads(SUMMARY.read_text()) if SUMMARY.exists() else {"runs": []}
     report["runs"] = [
         r for r in report["runs"]
-        if not (r["condition"] == a.condition and r["budget"] == a.budget)
+        if not (r["condition"] == a.condition and r["budget"] == a.budget
+                and r.get("seed", 1) == a.seed)
     ]
     report["runs"].append(entry)
     SUMMARY.write_text(json.dumps(report, indent=2, default=str))
