@@ -8,6 +8,7 @@ results/stage0_4/summary.json via run_stage0_4_fastapi.py.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import time
@@ -39,9 +40,17 @@ def completed() -> set:
 
 
 def main() -> int:
-    done = completed()
-    with open(OUT, "ab") as log:
-        for cond in CONDITIONS:
+    lock = ROOT / "results" / "matrix.lock"
+    try:
+        fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+        os.close(fd)
+    except FileExistsError:
+        print("matrix lock exists; refusing duplicate launch")
+        return 0
+    try:
+        done = completed()
+        with open(OUT, "ab") as log:
+            for cond in CONDITIONS:
             for seed in SEEDS:
                 if (cond, seed, BUDGET) in done:
                     continue
@@ -56,6 +65,8 @@ def main() -> int:
                 log.write(f"exit={p.returncode}\n".encode())
                 log.flush()
                 done.add((cond, seed, BUDGET))
+    finally:
+        lock.unlink(missing_ok=True)
     return 0
 
 
