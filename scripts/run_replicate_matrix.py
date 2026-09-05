@@ -51,20 +51,20 @@ def main() -> int:
         done = completed()
         with open(OUT, "ab") as log:
             for cond in CONDITIONS:
-            for seed in SEEDS:
-                if (cond, seed, BUDGET) in done:
-                    continue
-                msg = f"\n===== {cond} seed={seed} budget={BUDGET} start {time.strftime('%H:%M:%S')} =====\n"
-                log.write(msg.encode())
-                log.flush()
-                p = subprocess.run(
-                    [str(PY), str(SCRIPT), "--condition", cond,
-                     "--budget", str(BUDGET), "--seed", str(seed)],
-                    cwd=ROOT, stdout=log, stderr=log,
-                )
-                log.write(f"exit={p.returncode}\n".encode())
-                log.flush()
-                done.add((cond, seed, BUDGET))
+                for seed in SEEDS:
+                    if (cond, seed, BUDGET) in done:
+                        continue
+                    msg = f"\n===== {cond} seed={seed} budget={BUDGET} start {time.strftime('%H:%M:%S')} =====\n"
+                    log.write(msg.encode())
+                    log.flush()
+                    p = subprocess.run(
+                        [str(PY), str(SCRIPT), "--condition", cond,
+                         "--budget", str(BUDGET), "--seed", str(seed)],
+                        cwd=ROOT, stdout=log, stderr=log,
+                    )
+                    log.write(f"exit={p.returncode}\n".encode())
+                    log.flush()
+                    done.add((cond, seed, BUDGET))
     finally:
         lock.unlink(missing_ok=True)
     return 0
