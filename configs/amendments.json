@@ -1,0 +1,18 @@
+[
+  {
+    "id": "AMD-001",
+    "date": "2026-09-06",
+    "author": "harness amendment (user-approved, protocol unchanged)",
+    "scope": "extractors/c_extractor.py transport layer + continuity/runner.py failure path",
+    "summary": "C seed=2 cell was missing because a single 503 from the extractor LLM endpoint crashed run between session 1 and session 2, before any ledger row could be written. Amendment adds bounded transport retry (max 3 attempts) around the C extractor's LLM call for transient failures (HTTP 5xx, timeout, connection, overload) only. Parse failures (ExtractionError) are still NOT retried. Retry telemetry (attempts, transport_retries, final error) is recorded per extraction and flows into run metadata. If all retries fail, the run terminates cleanly with infrastructure_failure=true in the ledger rather than an unhandled exception. Extractor model, prompt, temperature, top_p, max output tokens, C schema, serializer, and all task wording are UNCHANGED.",
+    "frozen_elements_untouched": [
+      "schemas/c_v0_1.json",
+      "extractor prompt (c-extraction-v1)",
+      "extractor sampling params",
+      "serialization/c_serializer.py",
+      "agent model/config",
+      "task wording",
+      "budgets, seeds, evaluator"
+    ]
+  }
+]

@@ -115,6 +115,23 @@ def run_one(condition: str, budget: int, seed_run: int) -> dict:
         on_session_end=after_s1,
     )
     run_dir = RESULTS / summary["run_id"]
+
+    if summary.get("infrastructure_failure"):
+        entry = {
+            "run_id": summary["run_id"],
+            "condition": condition,
+            "budget": budget,
+            "seed": seed_run,
+            "experiment_commit": g["commit"],
+            "infrastructure_failure": True,
+            "failure": summary.get("failure"),
+            "failed_at_session": summary.get("failed_at_session"),
+            "success": False,
+        }
+        shutil.rmtree(seed, ignore_errors=True)
+        shutil.rmtree(workspace, ignore_errors=True)
+        return entry
+
     s1 = json.loads((run_dir / "session_1.json").read_text())
     s2 = json.loads((run_dir / "session_2.json").read_text())
     meta = json.loads((run_dir / "summary.json").read_text())["condition_metadata"]

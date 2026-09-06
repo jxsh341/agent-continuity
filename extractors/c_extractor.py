@@ -63,6 +63,34 @@ class ExtractionError(Exception):
     """Recorded, never repaired."""
 
 
+class ExtractionTransportError(ExtractionError):
+    """Transport-level extractor failure after all retries (AMD-001).
+    Distinct from parse failure; never confused with content issues."""
+
+
+# Amendment AMD-001: bounded retry for transient transport failures only.
+# Parse failures are NOT retried (see parse_output / ExtractionError).
+_TRANSPORT_MAX_ATTEMPTS = 3
+
+
+def _is_transient(exc: Exception) -> bool:
+    """Only transport-level failures may be retried (AMD-001): HTTP 5xx,
+    timeout, connection errors, rate/congestion signals."""
+    try:
+        from openai import (
+            APIConnectionError,
+            APIStatusError,
+            APITimeoutError,
+        )
+    except Exception:  # openai always installed in our env
+        return False
+    if isinstance(exc, (APITimeoutError, APIConnectionError)):
+        return True
+    if isinstance(exc, APIStatusError):
+        return exc.status_code is None or exc.status_code >= 500 or exc.status_code == 429
+    return False
+
+
 def _default_llm_complete(system: str, user: str) -> str:
     from openai import OpenAI
 
@@ -71,17 +99,33 @@ def _default_llm_complete(system: str, user: str) -> str:
         base_url=os.environ.get("LLM_BASE_URL") or None,
         timeout=600.0,
     )
-    resp = client.chat.completions.create(
-        model=EXTRACTOR_MODEL,
-        temperature=EXTRACTOR_TEMPERATURE,
-        top_p=EXTRACTOR_TOP_P,
-        max_tokens=EXTRACTOR_MAX_TOKENS,
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
+    last_err: Exception | None = None
+    for attempt in range(1, _TRANSPORT_MAX_ATTEMPTS + 1):
+        try:
+            resp = client.chat.completions.create(
+                model=EXTRACTOR_MODEL,
+                temperature=EXTRACTOR_TEMPERATURE,
+                top_p=EXTRACTOR_TOP_P,
+                max_tokens=EXTRACTOR_MAX_TOKENS,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
+            )
+            _EXTRACT_TELEMETRY["attempt"] = attempt
+            return resp.choices[0].message.content or ""
+        except Exception as e:  # noqa: BLE001 - classified below
+            last_err = e
+            if not _is_transient(e):
+                raise
+    raise ExtractionTransportError(
+        f"extractor transport failed after {_TRANSPORT_MAX_ATTEMPTS} attempts: {last_err}"
     )
-    return resp.choices[0].message.content or ""
+
+
+# Module-level telemetry for the in-flight extraction (single-threaded
+# harness; populated by _default_llm_complete, read by extract_c_state).
+_EXTRACT_TELEMETRY: dict = {"attempt": 0}
 
 
 def serialize_transcript(messages: list[dict]) -> str:
@@ -111,8 +155,13 @@ def extract_c_state(
     messages: list[dict],
     llm_complete: Callable[[str, str], str] | None = None,
 ) -> tuple[dict, str]:
-    """Returns (state, raw_output). Raises ExtractionError on garbage."""
+    """Returns (state, raw_output). Raises ExtractionError on garbage.
+
+    Telemetry from the default transport is available via
+    extractor_identity()["transport"] after the call.
+    """
     complete = llm_complete or _default_llm_complete
+    _EXTRACT_TELEMETRY["attempt"] = 0
     raw = complete(SYSTEM_PROMPT, "SESSION TRANSCRIPT:\n\n" + serialize_transcript(messages))
     state = normalize_state(parse_output(raw))
     return state, raw
@@ -151,4 +200,6 @@ def extractor_identity() -> dict:
         "top_p": EXTRACTOR_TOP_P,
         "max_tokens": EXTRACTOR_MAX_TOKENS,
         "prompt_version": PROMPT_VERSION,
+        "transport_max_attempts": _TRANSPORT_MAX_ATTEMPTS,
+        "transport_attempt_used": _EXTRACT_TELEMETRY.get("attempt", 0),
     }

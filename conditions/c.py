@@ -25,6 +25,7 @@ from conditions.base import ContextArtifact, ContinuityCondition, SessionRecord
 from continuity.tokens import count_tokens
 from extractors.c_extractor import (
     ExtractionError,
+    ExtractionTransportError,
     extract_c_state,
     extractor_identity,
 )
@@ -56,6 +57,14 @@ class ConditionC(ContinuityCondition):
             return
         try:
             state, raw = extract_c_state(messages, llm_complete=self._llm_complete)
+        except ExtractionTransportError as e:
+            # AMD-001: infra failure must propagate so the runner records
+            # it explicitly instead of counting it as a C outcome.
+            self._sessions.append(
+                {"session_index": idx, "infrastructure_failure": str(e)}
+            )
+            self._write("c_extraction_raw.txt", "")
+            raise
         except ExtractionError as e:
             self._error = str(e)
             self._raw = None

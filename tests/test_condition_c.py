@@ -8,9 +8,11 @@ from conditions.base import ContextArtifact
 from continuity.tokens import count_tokens
 from extractors.c_extractor import (
     ExtractionError,
+    ExtractionTransportError,
     extract_c_state,
     normalize_state,
     serialize_transcript,
+    extractor_identity,
 )
 from serialization.c_serializer import serialize_full, serialize_within_budget
 
@@ -114,3 +116,89 @@ def test_extract_c_state_parses_wrapped_json():
     state, out = extract_c_state(MESSAGES, llm_complete=lambda s, u: raw)
     assert state["facts"][0]["fact"] == "visible suite has 5 tests"
     assert out == raw
+
+
+def test_transport_failure_reraises_and_is_recorded(tmp_path):
+    """AMD-001: condition prepare raising any exception is recorded by the
+    runner as infrastructure_failure, not counted as a condition outcome."""
+    from continuity.runner import ExperimentRunner, config_hash
+    from continuity.models import RunConfig
+    from agent.models import AgentSessionResult
+
+    class RaisingCondition:
+        name = "C"
+
+        def build_context(self, budget, task=None):
+            from conditions.base import ContextArtifact
+            return ContextArtifact("", 0, budget, False, self.name)
+
+        def prepare(self, prev):
+            raise RuntimeError("simulated 503-after-retries")
+
+        def metadata(self):
+            return {"condition": "C"}
+
+    class FakeAgent:
+        def run_session(self, task, workspace, initial_context=""):
+            r = AgentSessionResult(task=task, workspace=str(workspace), initial_context=initial_context)
+            r.messages = [{"role": "user", "content": task}]
+            return r
+
+    import conditions as conditions_pkg
+    orig = conditions_pkg.CONDITIONS["C"]
+    conditions_pkg.CONDITIONS["C"] = lambda *a, **k: RaisingCondition()
+    try:
+        runner = ExperimentRunner(FakeAgent(), tmp_path, framework_pin={})
+        summary = runner.run(
+            RunConfig(condition="C", run_seed=1),
+            tasks=["t1", "t2"],
+            workspace=tmp_path,
+            evaluator=lambda ws, i: {"passed": True},
+        )
+    finally:
+        conditions_pkg.CONDITIONS["C"] = orig
+
+    assert summary["infrastructure_failure"] is True
+    assert summary["failed_at_session"] == 1
+    assert "infrastructure_failure" in summary
+
+
+def test_transient_then_success(tmp_path, monkeypatch):
+    """AMD-001: first call 503s, second succeeds — state extracted."""
+    from openai import APIStatusError
+
+    calls = {"n": 0}
+
+    class FakeResp:
+        status_code = 503
+        request = None
+        headers = {}
+
+    class FakeMessage:
+        content = GOOD_RAW
+
+    class FakeChoice:
+        message = FakeMessage()
+
+    class FakeCompletion:
+        choices = [FakeChoice()]
+
+    class FakeCompletions:
+        def create(self, **kwargs):
+            calls["n"] += 1
+            if calls["n"] == 1:
+                raise APIStatusError("overloaded", response=FakeResp(), body={})
+            return FakeCompletion()
+
+    class FakeChat:
+        completions = FakeCompletions()
+
+    class FakeClient:
+        def __init__(self, *a, **k):
+            self.chat = FakeChat()
+
+    import extractors.c_extractor as cx
+    monkeypatch.setattr("openai.OpenAI", FakeClient)
+    state, raw = cx._default_llm_complete("sys", "user"), None
+    assert calls["n"] == 2
+    assert cx._EXTRACT_TELEMETRY["attempt"] == 2

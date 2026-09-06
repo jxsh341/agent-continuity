@@ -175,16 +175,33 @@ class ExperimentRunner:
 
             if on_session_end is not None:
                 on_session_end(i, workspace)
-            condition.prepare(
-                {
-                    "session_index": i,
-                    "task": task,
-                    "context": artifact.text,
-                    "messages": result.messages,
-                    "metrics": result.llm_metrics,
-                    "error": result.error,
+            try:
+                condition.prepare(
+                    {
+                        "session_index": i,
+                        "task": task,
+                        "context": artifact.text,
+                        "messages": result.messages,
+                        "metrics": result.llm_metrics,
+                        "error": result.error,
+                    }
+                )
+            except Exception as exc:
+                # AMD-001: transport-level memory/extraction failure. Record
+                # explicitly and stop the run; it is NOT a condition outcome.
+                summary = {
+                    "run_id": run_id,
+                    "config_hash": chash,
+                    "condition": config.condition,
+                    "n_sessions": len(sessions),
+                    "infrastructure_failure": True,
+                    "failure": f"{type(exc).__name__}: {exc}",
+                    "failed_at_session": i,
                 }
-            )
+                (run_root / "summary.json").write_text(
+                    json.dumps(summary, indent=2, default=str), encoding="utf-8"
+                )
+                return summary
 
         summary = {
             "run_id": run_id,
