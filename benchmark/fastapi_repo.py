@@ -15,6 +15,40 @@ Nothing here mentions the continuity experiment.
 from __future__ import annotations
 from pathlib import Path
 
+BENCHMARK_ID = "fastapi_shopapi_v1"
+
+# Critical facts, annotated by required fidelity (see BENCHMARK_SPEC_v1.md).
+CRITICAL_FACTS = [
+    {"id": "CF-reports-path", "label": "/reports/summary",
+     "type": "exact_identifier", "check": lambda ctx: "/reports/summary" in ctx},
+    {"id": "CF-page-size", "label": "page_size=7", "type": "exact_value",
+     "check": lambda ctx: bool(__import__("re").search(
+         r"page[_ ]size['\"\s:=]*7\b", ctx, __import__("re").I))},
+    {"id": "CF-reports-shape", "label": "'reports' response key",
+     "type": "structural",
+     "check": lambda ctx: "'reports'" in ctx or '"reports"' in ctx},
+    {"id": "CF-defer-now", "label": "deferred to next session",
+     "type": "negative_instruction", "check": lambda ctx: True},
+]
+
+
+def apply_oracle(root: Path) -> None:
+    addon = '''
+
+@app.get("/reports/summary")
+def reports_summary():
+    counts = {}
+    for i in ITEMS:
+        counts[i["category"]] = counts.get(i["category"], 0) + 1
+    return {
+        "reports": [{"category": c, "count": n} for c, n in counts.items()],
+        "page_size": 7,
+    }
+'''
+    with open(root / "app" / "main.py", "a") as f:
+        f.write(addon)
+
+
 # The session-1-only decision values (hidden test asserts these).
 REPORTS_PATH = "/reports/summary"
 REPORTS_PAGE_SIZE = 7
