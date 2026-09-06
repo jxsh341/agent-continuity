@@ -46,6 +46,15 @@ def main() -> int:
     a = ap.parse_args()
 
     bench = BENCHMARKS[a.benchmark]
+
+    gs = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT,
+                        capture_output=True, text=True)
+    sd = subprocess.run(["git", "status", "--short"], cwd=ROOT,
+                        capture_output=True, text=True)
+    if sd.stdout.strip():
+        raise RuntimeError("tracked tree dirty; refuse to run canonical cell")
+    experiment_commit = gs.stdout.strip()
+
     out_root = ROOT / "results" / f"stage1_{a.benchmark}"
     out_root.mkdir(parents=True, exist_ok=True)
 
@@ -110,6 +119,7 @@ def main() -> int:
         "condition": a.condition,
         "budget": a.budget,
         "seed": a.seed,
+        "experiment_commit": experiment_commit,
         "s1_visible_tests_passed": json.loads(
             (run_dir / "session_1.json").read_text()
         )["evaluation"]["passed"],
