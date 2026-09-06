@@ -86,9 +86,13 @@ def main() -> int:
         return r
 
     runner = ExperimentRunner(agent, out_root, framework_pin=g)
+    hint = (
+        f"The workspace root is: {workspace}\n"
+        "Use it verbatim (absolute Windows path) as the tool path prefix.\n\n"
+    )
     summary = runner.run(
         RunConfig(condition=a.condition, context_budget=a.budget, run_seed=a.seed),
-        tasks=[bench.TASK_S1, bench.TASK_S2],
+        tasks=[hint + bench.TASK_S1, hint + bench.TASK_S2],
         workspace=workspace,
         evaluator=evaluator,
         on_session_end=after,
