@@ -45,30 +45,62 @@ def main() -> int:
     except FileExistsError:
         print("stage1 matrix lock exists; refusing duplicate launch")
         return 0
+
+    # Parallelism is purely infrastructural: cells are mutually orthogonal
+    # (own workspace, run dir, memory store). Identical inputs whether
+    # serial or parallel. Config/concurrency is recorded in runner metadata.
+    workers = int(os.environ.get("STAGE1_WORKERS", "4"))
     try:
+        import queue
+        import threading
+
+        todo = queue.Queue()
         done = completed()
+        for bench in BENCHMARKS:
+            for cond in CONDITIONS:
+                for budget in BUDGETS:
+                    for seed in SEEDS:
+                        if (bench, cond, budget, seed) not in done:
+                            todo.put((bench, cond, budget, seed))
+
         with open(OUT, "ab") as log:
-            for bench in BENCHMARKS:
-                for cond in CONDITIONS:
-                    for budget in BUDGETS:
-                        for seed in SEEDS:
-                            cell = (bench, cond, budget, seed)
-                            if cell in done:
-                                continue
-                            log.write(
-                                f"\n===== {bench}/{cond}/b{budget}/s{seed} "
-                                f"start {time.strftime('%F %T')} =====\n".encode()
-                            )
-                            log.flush()
-                            p = subprocess.run(
-                                [str(PY), str(CELL), "--benchmark", bench,
-                                 "--condition", cond, "--budget", str(budget),
-                                 "--seed", str(seed)],
-                                cwd=ROOT, stdout=log, stderr=log,
-                            )
-                            log.write(f"exit={p.returncode}\n".encode())
-                            log.flush()
-                            done.add(cell)
+            def worker() -> None:
+                while True:
+                    try:
+                        bench, cond, budget, seed = todo.get_nowait()
+                    except queue.Empty:
+                        return
+                    log.write(
+                        f"\n===== {bench}/{cond}/b{budget}/s{seed} "
+                        f"start {time.strftime('%F %T')} =====\n".encode()
+                    )
+                    log.flush()
+                    # One log per cell avoids interleaved stdout
+                    cell_log = (
+                        ROOT / "results" /
+                        f"cell_{bench}_{cond}_{budget}_{seed}.log"
+                    )
+                    with open(cell_log, "ab") as clog:
+                        p = subprocess.run(
+                            [str(PY), str(CELL), "--benchmark", bench,
+                             "--condition", cond, "--budget", str(budget),
+                             "--seed", str(seed)],
+                            cwd=ROOT, stdout=clog, stderr=clog,
+                        )
+                    log.write(
+                        f"cell {bench}/{cond}/b{budget}/s{seed} "
+                        f"exit={p.returncode}\n".encode()
+                    )
+                    log.flush()
+                    todo.task_done()
+
+            threads = [
+                threading.Thread(target=worker, daemon=True)
+                for _ in range(workers)
+            ]
+            for t in threads:
+                t.start()
+            todo.join()
     finally:
         lock.unlink(missing_ok=True)
     return 0
