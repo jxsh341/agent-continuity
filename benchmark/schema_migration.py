@@ -132,7 +132,11 @@ CRITICAL_FACTS = [
     {"id": "CF-table-name", "label": TABLE, "type": "exact_identifier",
      "check": lambda ctx: TABLE in ctx},
     {"id": "CF-columns", "label": "id,event,created_at", "type": "structural",
-     "check": lambda ctx: all(c in ctx for c in COLUMNS)},
+     "check": lambda ctx: bool(
+         __import__("re").search(r"\bid\b", ctx)
+         and __import__("re").search(r"\bevent\b", ctx)
+         and "created_at" in ctx
+     )},
     {"id": "CF-defer-now", "label": "deferred to next session",
      "type": "negative_instruction", "check": lambda ctx: True},
 ]

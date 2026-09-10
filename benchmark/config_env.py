@@ -98,7 +98,7 @@ CRITICAL_FACTS = [
     {"id": "CF-config-key", "label": CONFIG_KEY, "type": "exact_identifier",
      "check": lambda ctx: CONFIG_KEY in ctx},
     {"id": "CF-rate-value", "label": RATE_LIMIT, "type": "exact_value",
-     "check": lambda ctx: RATE_LIMIT in ctx},
+     "check": lambda ctx: bool(__import__("re").search(r"\b42\b", ctx))},
     {"id": "CF-defer-now", "label": "deferred to next session",
      "type": "negative_instruction", "check": lambda ctx: True},
 ]
