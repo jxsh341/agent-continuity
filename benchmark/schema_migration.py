@@ -195,3 +195,10 @@ def apply_oracle(root: Path) -> None:
     (root / "migrations" / NEXT_MIGRATION).write_text(
         ORACLE_FILES["migrations/003_add_audit_log.sql"]
     )
+
+
+def apply_s1_reference(root: Path) -> None:
+    """Diagnostic only (C-oracle ablation): correct S1 = the migration
+    runner. Leaves migration 003 (the S2 fact-dependent work) unwritten."""
+    with open(root / "app" / "db.py", "a") as f:
+        f.write(_ORACLE_DB_APPEND)

@@ -1,11 +1,13 @@
-"""C-oracle ablation (exploratory): feed a MANUALLY-VERIFIED structured state
-as the S2 context, bypassing the frozen extractor entirely, to isolate
-"representation vs extraction".
+"""C-oracle ablation (exploratory), Option B: S2-only.
 
-Not part of the A/B/C/D score. Builds ground-truth C state from the benchmark's
-critical facts, serializes it, and runs the S2 agent once. If C-oracle succeeds
-where C-frozen failed on a benchmark, the bottleneck is extraction, not the
-structured representation.
+Skips the S1 agent entirely (its output is discarded in the oracle) and instead
+applies a deterministic reference S1 implementation. Then runs ONLY the S2
+agent with a manually-verified ground-truth C state as its context.
+
+Isolates: "given correct structured state, can the downstream S2 agent use it?"
+
+Not part of the A/B/C/D score. Does not change C schema/serializer/prompt,
+agent model, task wording, benchmark, evaluator, prioritization, or budget.
 
 Usage:
     .venv\\Scripts\\python scripts\\c_oracle_ablation.py --benchmark config_env
@@ -25,10 +27,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from agent import ModelConfig, OpenHandsCodingAgent  # noqa: E402
 from benchmark.registry import BENCHMARKS  # noqa: E402
-from continuity.models import RunConfig  # noqa: E402
-from continuity.runner import ExperimentRunner  # noqa: E402
+from continuity.tokens import count_tokens  # noqa: E402
+from serialization.c_serializer import serialize_full  # noqa: E402
 
-# Ground-truth oracle state per benchmark (the "right answer", written by hand).
 ORACLE_STATE = {
     "fastapi": {
         "decisions": [
@@ -63,70 +64,51 @@ def pytest_run(ws: Path) -> dict:
     return {"passed": p.returncode == 0, "tail": p.stdout[-1500:]}
 
 
-class OracleCondition:
-    """A ContinuityCondition that always returns a fixed, verified state."""
-
-    name = "C"
-
-    def __init__(self, state: dict):
-        from serialization.c_serializer import serialize_full
-        self._text = serialize_full(state)
-
-    def prepare(self, previous_session):
-        pass
-
-    def build_context(self, budget_tokens, task=None):
-        from conditions.base import ContextArtifact
-        from continuity.tokens import count_tokens
-        return ContextArtifact(
-            text=self._text, token_count=count_tokens(self._text),
-            budget_tokens=budget_tokens, truncated=False,
-            condition="C-oracle", provenance={"kind": "oracle"},
-        )
-
-    def metadata(self):
-        return {"condition": "C-oracle"}
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--benchmark", required=True, choices=list(BENCHMARKS))
     ap.add_argument("--budget", type=int, default=2048)
-    ap.add_argument("--seed", type=int, default=1)
     a = ap.parse_args()
 
     bench = BENCHMARKS[a.benchmark]
     out_root = Path("results") / f"oracle_{a.benchmark}"
     out_root.mkdir(parents=True, exist_ok=True)
 
-    g = json.loads((Path("configs/framework_pin.json")).read_text())
+    g = json.loads(Path("configs/framework_pin.json").read_text())
     config = ModelConfig.from_env()
-    agent = OpenHandsCodingAgent(config, framework_commit=g["commit"])
-    runner = ExperimentRunner(agent, out_root, framework_pin=g)
 
     seed = Path(tempfile.mkdtemp(prefix=f"oracle_{a.benchmark}_seed_"))
     bench.make_seed(seed)
     ws = Path(tempfile.mkdtemp(prefix=f"oracle_{a.benchmark}_ws_"))
     shutil.copytree(seed, ws, dirs_exist_ok=True)
+    bench.apply_s1_reference(ws)
 
-    import conditions as conditions_pkg
-    oracle = OracleCondition(ORACLE_STATE[a.benchmark])
-    orig = conditions_pkg.CONDITIONS["C"]
-    conditions_pkg.CONDITIONS["C"] = lambda *a, **k: oracle
-    try:
-        summary = runner.run(
-            RunConfig(condition="C", context_budget=a.budget, run_seed=a.seed),
-            tasks=[bench.TASK_S1, bench.TASK_S2],
-            workspace=ws,
-            evaluator=lambda ws, idx: ({"passed": True}
-                                       if idx == 1 else
-                                       (bench.inject_hidden_tests(ws), pytest_run(ws))[1]),
-        )
-    finally:
-        conditions_pkg.CONDITIONS["C"] = orig
+    oracle_text = serialize_full(ORACLE_STATE[a.benchmark])
+    hint = (
+        f"The workspace root is: {ws}\n"
+        "Use it verbatim (absolute Windows path) as the tool path prefix.\n\n"
+    )
+    task = hint + bench.TASK_S2
 
-    print(json.dumps(summary, indent=2, default=str))
-    return 0
+    agent = OpenHandsCodingAgent(config, framework_commit=g["commit"])
+    result = agent.run_session(task=task, workspace=ws, initial_context=oracle_text)
+
+    bench.inject_hidden_tests(ws)
+    ev = pytest_run(ws)
+
+    entry = {
+        "benchmark": a.benchmark,
+        "oracle_tokens": count_tokens(oracle_text),
+        "agent_error": result.error,
+        "s2_hidden_tests_passed": ev["passed"],
+        "eval_tail": ev["tail"],
+    }
+    (out_root / "result.json").write_text(json.dumps(entry, indent=2))
+    print(json.dumps(entry, indent=2, default=str))
+
+    shutil.rmtree(seed, ignore_errors=True)
+    shutil.rmtree(ws, ignore_errors=True)
+    return 0 if ev["passed"] else 1
 
 
 if __name__ == "__main__":

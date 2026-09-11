@@ -145,3 +145,30 @@ def contamination_scan(root: Path) -> bool:
 def apply_oracle(root: Path) -> None:
     with open(root / "app" / "config.py", "a") as f:
         f.write(_ORACLE)
+
+
+_S1_REFERENCE = '''
+
+def load_config() -> dict:
+    """S1 reference: generic env override layer. The rate-limit mapping
+    (SHOPAPI_RATE_LIMIT_RPS -> rate_limit_rps) is the S2, fact-dependent
+    work and is intentionally absent here."""
+    import os
+
+    cfg = yaml.safe_load(DEFAULTS_PATH.read_text())
+    for key, val in os.environ.items():
+        target = key.lower()
+        if target in cfg:
+            if isinstance(cfg[target], int):
+                cfg[target] = int(val)
+            else:
+                cfg[target] = val
+    return cfg
+'''
+
+
+def apply_s1_reference(root: Path) -> None:
+    """Diagnostic only (C-oracle ablation): correct S1 = generic env
+    override. Leaves the SHOPAPI_RATE_LIMIT_RPS mapping to S2."""
+    with open(root / "app" / "config.py", "a") as f:
+        f.write(_S1_REFERENCE)

@@ -49,6 +49,24 @@ def reports_summary():
         f.write(addon)
 
 
+def apply_s1_reference(root: Path) -> None:
+    """Diagnostic only (C-oracle ablation): deterministic correct S1.
+    Implements the DELETE endpoint; leaves the design-dependent S2 work
+    undone. Not used by the frozen runner/evaluator."""
+    addon = '''
+
+@app.delete("/items/{item_id}", status_code=204)
+def delete_item(item_id: int):
+    for idx, item in enumerate(ITEMS):
+        if item["id"] == item_id:
+            del ITEMS[idx]
+            return
+    raise HTTPException(status_code=404, detail="Item not found")
+'''
+    with open(root / "app" / "main.py", "a") as f:
+        f.write(addon)
+
+
 # The session-1-only decision values (hidden test asserts these).
 REPORTS_PATH = "/reports/summary"
 REPORTS_PAGE_SIZE = 7
