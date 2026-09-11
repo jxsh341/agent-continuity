@@ -151,20 +151,90 @@ def parse_output(raw: str) -> dict:
     raise ExtractionError("extractor output is not parseable JSON")
 
 
+def schema_is_valid(state: dict) -> bool:
+    """AMD-002: hard schema check used by bounded recovery. The frozen schema
+    requires schema_version=C-v0.1 and all ten top-level keys present."""
+    required = {"schema_version", "goals", "tasks", "decisions", "entities",
+                "facts", "events", "failures", "dependencies", "current_state"}
+    return (
+        isinstance(state, dict)
+        and state.get("schema_version") == "C-v0.1"
+        and required.issubset(state.keys())
+        and isinstance(state.get("current_state"), dict)
+    )
+
+
+_MAX_RECOVERY_ATTEMPTS = 3
+_RECOVERY_TELEMETRY: dict = {}
+
+
 def extract_c_state(
     messages: list[dict],
     llm_complete: Callable[[str, str], str] | None = None,
 ) -> tuple[dict, str]:
     """Returns (state, raw_output). Raises ExtractionError on garbage.
 
-    Telemetry from the default transport is available via
-    extractor_identity()["transport"] after the call.
+    AMD-002 — bounded parse/schema recovery:
+      up to _MAX_RECOVERY_ATTEMPTS total attempts, retrying ONLY on
+      transport failure (AMD-001), malformed JSON, or schema-invalid output.
+      Semantic fidelity (missing facts, paraphrase) NEVER triggers retry —
+      that is a property of the extractor we are measuring, not fixing.
+
+    Every attempt is recorded in _RECOVERY_TELEMETRY.
     """
     complete = llm_complete or _default_llm_complete
     _EXTRACT_TELEMETRY["attempt"] = 0
-    raw = complete(SYSTEM_PROMPT, "SESSION TRANSCRIPT:\n\n" + serialize_transcript(messages))
-    state = normalize_state(parse_output(raw))
-    return state, raw
+    USER = "SESSION TRANSCRIPT:\n\n" + serialize_transcript(messages)
+
+    attempts = []
+    last_raw = ""
+    last_err: Exception | None = None
+    for attempt in range(1, _MAX_RECOVERY_ATTEMPTS + 1):
+        try:
+            raw = complete(SYSTEM_PROMPT, USER)
+            last_raw = raw
+            state = normalize_state(parse_output(raw))
+            ok = schema_is_valid(state)
+            attempts.append({
+                "attempt": attempt,
+                "parse_success": True,
+                "schema_valid": ok,
+            })
+            if not ok:
+                last_err = ExtractionError(
+                    "extractor output parsed but failed schema validation"
+                )
+                continue
+            _RECOVERY_TELEMETRY.clear()
+            _RECOVERY_TELEMETRY.update({
+                "attempts": attempts,
+                "attempt_count": attempt,
+                "first_attempt_parse_success": attempts[0]["parse_success"],
+                "final_parse_success": True,
+                "final_schema_valid": True,
+                "recovery_mode": "bounded_parse_schema_recovery (AMD-002)",
+            })
+            return state, raw
+        except ExtractionTransportError as e:
+            attempts.append({"attempt": attempt, "parse_success": False,
+                             "schema_valid": False, "transport_error": str(e)})
+            last_err = e
+            break  # transport layer already retried (AMD-001); no point looping
+        except ExtractionError as e:
+            attempts.append({"attempt": attempt, "parse_success": False,
+                             "schema_valid": False, "error": str(e)})
+            last_err = e
+    _RECOVERY_TELEMETRY.clear()
+    _RECOVERY_TELEMETRY.update({
+        "attempts": attempts,
+        "attempt_count": len(attempts),
+        "first_attempt_parse_success": attempts[0]["parse_success"],
+        "final_parse_success": False,
+        "recovery_mode": "bounded_parse_schema_recovery (AMD-002)",
+    })
+    raise ExtractionError(
+        f"extraction failed after {len(attempts)} attempts: {last_err}"
+    )
 
 
 def normalize_state(parsed: dict) -> dict:
@@ -202,4 +272,5 @@ def extractor_identity() -> dict:
         "prompt_version": PROMPT_VERSION,
         "transport_max_attempts": _TRANSPORT_MAX_ATTEMPTS,
         "transport_attempt_used": _EXTRACT_TELEMETRY.get("attempt", 0),
+        "recovery_telemetry": dict(_RECOVERY_TELEMETRY),
     }

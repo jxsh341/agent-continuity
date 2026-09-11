@@ -9,6 +9,7 @@ from continuity.tokens import count_tokens
 from extractors.c_extractor import (
     ExtractionError,
     ExtractionTransportError,
+    _RECOVERY_TELEMETRY,
     extract_c_state,
     normalize_state,
     serialize_transcript,
@@ -202,3 +203,52 @@ def test_transient_then_success(tmp_path, monkeypatch):
     state, raw = cx._default_llm_complete("sys", "user"), None
     assert calls["n"] == 2
     assert cx._EXTRACT_TELEMETRY["attempt"] == 2
+
+
+def test_amd002_retries_parse_failure_then_succeeds():
+    calls = {"n": 0}
+    bad = '{"not": "schema"'
+
+    def flaky(system, user):
+        calls["n"] += 1
+        return bad if calls["n"] == 1 else GOOD_RAW
+
+    state, raw = extract_c_state(MESSAGES, llm_complete=flaky)
+    assert state["schema_version"] == "C-v0.1"
+    assert calls["n"] == 2
+    assert _RECOVERY_TELEMETRY["attempt_count"] == 2
+    assert _RECOVERY_TELEMETRY["final_parse_success"] is True
+    assert _RECOVERY_TELEMETRY["first_attempt_parse_success"] is False
+
+
+def test_amd002_never_retries_semantic_omission():
+    # Valid schema but missing the critical facts -> single attempt, success.
+    state_like = json.loads(GOOD_RAW)
+    state_like["facts"] = []
+    semantically_thin = json.dumps(state_like)
+    calls = {"n": 0}
+
+    def once(system, user):
+        calls["n"] += 1
+        return semantically_thin
+
+    state, raw = extract_c_state(MESSAGES, llm_complete=once)
+    assert calls["n"] == 1
+    assert state["facts"] == []
+    assert _RECOVERY_TELEMETRY["attempt_count"] == 1
+
+
+def test_amd002_fails_after_max_attempts():
+    calls = {"n": 0}
+
+    def always_bad(system, user):
+        calls["n"] += 1
+        return "not json at all {"
+
+    try:
+        extract_c_state(MESSAGES, llm_complete=always_bad)
+        assert False, "should raise"
+    except ExtractionError:
+        pass
+    assert calls["n"] == 3
+    assert _RECOVERY_TELEMETRY["final_parse_success"] is False

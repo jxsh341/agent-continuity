@@ -43,6 +43,8 @@ def main() -> int:
     ap.add_argument("--condition", required=True, choices=list("ABCD"))
     ap.add_argument("--budget", type=int, required=True)
     ap.add_argument("--seed", type=int, default=1)
+    ap.add_argument("--out-root", type=str, default=None,
+                    help="override results root (Stage 3 writes elsewhere)")
     a = ap.parse_args()
 
     bench = BENCHMARKS[a.benchmark]
@@ -55,7 +57,10 @@ def main() -> int:
         raise RuntimeError("tracked tree dirty; refuse to run canonical cell")
     experiment_commit = gs.stdout.strip()
 
-    out_root = ROOT / "results" / f"stage1_{a.benchmark}"
+    out_root = (
+        (ROOT / a.out_root if not Path(a.out_root).is_absolute() else Path(a.out_root))
+        if a.out_root else ROOT / "results" / f"stage1_{a.benchmark}"
+    )
     out_root.mkdir(parents=True, exist_ok=True)
 
     g = json.loads((ROOT / "configs" / "framework_pin.json").read_text())
