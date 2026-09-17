@@ -1,0 +1,2561 @@
+[
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-1-6f0c1106",
+    "condition": "A",
+    "budget": 8192,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "11e6aea2438b39f0810114bd8baae41280ca2ab9cfbb58d59783a24bd6059d03"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-1-b85e99bc",
+    "condition": "A",
+    "budget": 4096,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "03dae42344666aca7300637bf98f89aad48916e713275cf0074ffa90356e2acd"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-1-be31f192",
+    "condition": "A",
+    "budget": 2048,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=7ae08c55-0c1c-43f3-896b-88694836d46e: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "aed16e9895840a389e17400603088e887320e5d2b65f0241950446f4925e5c5c"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-1-f161afef",
+    "condition": "A",
+    "budget": 1024,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=33e663dd-554f-4803-9eb3-49a4620cc81f: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "766bdfee7ffa6978c41b896f3d740e37073cdd454f3baee3d8877b6578343ec5"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-2-2a798a5a",
+    "condition": "A",
+    "budget": 2048,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=51516cc7-0df9-4b6b-a9f4-150720163c57: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "2be3899edd53e374e4483d72d3000b3c528434c7b101fd2af30da4ea0897b866"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-2-8c21d196",
+    "condition": "A",
+    "budget": 4096,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "8b8afcaa74d0978e20afc6d166c43afaa9b2b2cf057ed46fa04bdb17f7e95941"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-2-a4ea995f",
+    "condition": "A",
+    "budget": 1024,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=0301802d-d9b3-40b9-bf74-5343dee585e1: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "3880cefba63fb2f64ed7a2396259f46ad293da881a2e3b60680ce27b4476d06e"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-2-d5dee7f9",
+    "condition": "A",
+    "budget": 8192,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "c4f72026792b32a9367d339668dc4a19f0614beef69e2f28091e31ed34d2417d"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-3-6a375582",
+    "condition": "A",
+    "budget": 2048,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=24496639-25ca-47da-be8b-8113344150dd: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "a4e39206a6123f1fc209becf046c16192cbd13b8433f95838f6972b46ee6b5d2"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-3-9bdc1a3a",
+    "condition": "A",
+    "budget": 4096,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "4a7f368b0d995d49d2c0c5188f8c4af019a81ad3ce431079ca482cab92bedc94"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-3-c0df564e",
+    "condition": "A",
+    "budget": 1024,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=1e158d84-9c87-4c42-a82b-11b6feb8e41e: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "2690a76730f8ba4f56cc1a424de6700872bce9b0449b91e3f015367393c1741a"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-3-d78a37e1",
+    "condition": "A",
+    "budget": 8192,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "1054e00b3edfad94413aa0e6713256d166466a9462d3b924e950e274a68b7176"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-4-70446a99",
+    "condition": "A",
+    "budget": 8192,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "af8ca648e1da6ceeb4eaba587f16e014877cade1f4705fa3fd5486f1c5007b79"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-4-8b131672",
+    "condition": "A",
+    "budget": 1024,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=b81d3ead-cd85-4827-8c21-2847811534d0: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "040f5698fceb6cbe1c21e2ff579f6100c62cd1c63281e284646d2989be351d21"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-4-9dca1d30",
+    "condition": "A",
+    "budget": 2048,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=e572805e-365b-4b1c-917d-65bd53201d1f: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "2ac2432ecd6f9cb5f4b97e87a3a84b8392fd8ce0db7af699ad2fadfc40e6c9ee"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-4-aaf4f7fa",
+    "condition": "A",
+    "budget": 4096,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "29cfa037d45fe04dd2186be0b84cbaa821955bf0c4b112d311938e8b6f860f9b"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-5-1731f5a5",
+    "condition": "A",
+    "budget": 4096,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "c08bd42e7794847a0eedc4c56b7e77a4fed619d18342463cf76466a8b0dc7e5b"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-5-afa47e59",
+    "condition": "A",
+    "budget": 1024,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=fc04d2a3-a4fc-4ad6-ac5f-75a96d7cab27: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "7c1fb348d68aa0d8540f5320ad5181e73ffc6b46b3334699122e64856fdcf2ce"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-5-c8d0446c",
+    "condition": "A",
+    "budget": 8192,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "721054f79a62cfadc387556af7c06b1a8a16bab230e0dbc968959ad37816cb10"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "A-5-c9409c6e",
+    "condition": "A",
+    "budget": 2048,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "aa57ffb18a60484a9005feafc36b3cc180bb9c84cadb2d43157429d87e3cccfe"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-1-2c1018e7",
+    "condition": "B",
+    "budget": 4096,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 4096,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "d14a7ef13f9ffa3abad8d0e85ac888e7520f2dcd00aece66c134de88c2e52a98"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-1-6950b205",
+    "condition": "B",
+    "budget": 8192,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 8192,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "265c00161f78fb44a041489242bf6eef57f6d77eeb3c60f9bb7a19b431c4f557"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-1-72d28c7e",
+    "condition": "B",
+    "budget": 1024,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 1024,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "8d118fe58cec781c967ab37a9c1b895d74933eef4295b6cbae43e8ee59d0cd31"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-1-76746452",
+    "condition": "B",
+    "budget": 2048,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=b260f378-5d54-4f9e-b68d-cba8e2700361: litellm.NotFoundError: NotFoundError: OpenAIException - Error code: 404",
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 2048,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "d6a9acd8f074f9a137944cb1262d6c29d674d472fb700c9526485ed3661e6632"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-2-240b003f",
+    "condition": "B",
+    "budget": 8192,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 8192,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "f02077f0e5c11289bc6fa0cb4d918e8b926eedfaf65ffc22a0c2ae6f24c785bc"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-2-69061247",
+    "condition": "B",
+    "budget": 1024,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 1024,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "b0741d3aa1650c727f5d4d9cc4b9cd07aa0221f37d436a415639b72fab387be6"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-2-73fb94af",
+    "condition": "B",
+    "budget": 4096,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 4096,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "9bce889054ab28e4b83690d4910c9e2cc916592403b5d566fb7e434e00901fd8"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-2-cff1b64c",
+    "condition": "B",
+    "budget": 2048,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 2048,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "2f990ccdda7ebc28a4d43b6e70282da4825a62e8d9a4574b237252a34213c3c1"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-3-386cf8d2",
+    "condition": "B",
+    "budget": 4096,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 4096,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "19dcf524612ca63067d9df9e233c3eb3c18f3eaf1b047ad0c66d15bfcc3c071f"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-3-7d7507b1",
+    "condition": "B",
+    "budget": 2048,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 2048,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "5552ea0ece97b7ccd7a39424d328e1d20491b0951d71498eb6045a5fd9646e04"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-3-8ee6bdf0",
+    "condition": "B",
+    "budget": 1024,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 1024,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "685b37ad1152585cc9ec5fc19b4c64bbefaf223a24e732c3938fafc1a5ba04e3"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-3-d54f4771",
+    "condition": "B",
+    "budget": 8192,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 8192,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "b52ee255a70dfa3eb0b6ea9cd5c0756d4eae30433bbee45209f66468be64ab45"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-4-812f083a",
+    "condition": "B",
+    "budget": 1024,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 1024,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "4d5cc59c1e20056b970d7947c7764230b2ae1affb94d798d71804df7af9a243d"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-4-a1784b78",
+    "condition": "B",
+    "budget": 4096,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 4096,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "568b3251d4d68e1c54935ee4469cb66a9680fa3eb90eae191779bcf475519d56"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-4-aca522cf",
+    "condition": "B",
+    "budget": 2048,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 2048,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "f8e7c21e21d2fc5eb035e97630fdd6273704ee925f4f2c76d8a2580e026fa053"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-4-cb5e6713",
+    "condition": "B",
+    "budget": 8192,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 72,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 8192,
+      "tokens_before_budget": 72,
+      "memory_ids": [
+        "53fbcf96-c4f9-4914-82ee-087cceb77f99"
+      ],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "memories_kept": 1,
+      "memories_returned": 1,
+      "context_hash": "7733432c2c8c1de32f8c4d330a0161e54ad63388655afd4d701ddccf1abff65b",
+      "source_session": 1,
+      "source_events_hash": "a6082747cccc1fa87b98b99980b17fa976a82a00cfda03c374bc4f40edcaadcb"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-5-0592b7e1",
+    "condition": "B",
+    "budget": 4096,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 4096,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "7b723feafbcb87035e223f82414d234768034e5411ce14041ac2b07eec971dbc"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-5-0e4ffd62",
+    "condition": "B",
+    "budget": 8192,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 8192,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "4a7d9455162870849f2504097cb1b9bc55e8b13bcb7583d7adee9c93c29f0493"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-5-5a20017d",
+    "condition": "B",
+    "budget": 1024,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 1024,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "0cbcc923ff0718ac316510fab0a89f9595230277c7ca7f6cb3def76f8c259d6c"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "B-5-d7e274bb",
+    "condition": "B",
+    "budget": 2048,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 0,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "system": "mem0 2.0.19",
+      "commit": "19cb89aff472325c707f64b2f34ae6afdbf7faf7",
+      "tokenizer": "cl100k_base",
+      "budget": 2048,
+      "tokens_before_budget": 0,
+      "memory_ids": [],
+      "extractor_model": "nvidia/nemotron-3-ultra-550b-a55b",
+      "context_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_session": 1,
+      "source_events_hash": "94c9fc7e99dc11a2549ab17ee315175415ba5426ecc65f99f19b332bbab1f784"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-1-2635bc8f",
+    "condition": "C",
+    "budget": 2048,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 752,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 752,
+      "serialized_tokens": 752,
+      "budget": 2048,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "723a1ece9bee261d03c20fbc097de8d32133839f629cc5df64fc212c0dbc63f6",
+      "source_session": 1,
+      "source_events_hash": "c4f8dfa09e4213d6d2b3599c079bede0bb9ec92597b212e458563572e3cda312"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-1-44e34b21",
+    "condition": "C",
+    "budget": 4096,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 994,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 994,
+      "serialized_tokens": 994,
+      "budget": 4096,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "failures",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "476123e693ddb80f8ba904ab37595ed8bb68e8fef6a5f597916e5dcb3197f945",
+      "source_session": 1,
+      "source_events_hash": "0b496c8cffaf704ebb5f6c9027287c9d89489e438d3b2ac306f5e82ca1e3a130"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-1-4bec8a48",
+    "condition": "C",
+    "budget": 8192,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=2b65856c-247f-44fd-8f80-4586743e883d: litellm.RateLimitError: RateLimitError: OpenAIException - Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+    "s2_ctx_tokens": 1010,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 1010,
+      "serialized_tokens": 1010,
+      "budget": 8192,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "aa0263dfd5e0f14f7cc3f92a94883d8cff5b005a1d47d97a461cc47d0ec5708b",
+      "source_session": 1,
+      "source_events_hash": "860f9d5ff24d0058888b2815fa6296a291ea6f37911bb058cc4214bbe5667f83"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-1-ef6775e6",
+    "condition": "C",
+    "budget": 1024,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 711,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 711,
+      "serialized_tokens": 711,
+      "budget": 1024,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "d594745d2edd99d5fb7163b763895035aa3a3b391a9e5d91b0cb87db8e9bee51",
+      "source_session": 1,
+      "source_events_hash": "b5341a420c0409f5b992c2a7155c7e643aebaed8d80067dcf528c2782339a9d2"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-2-0f895db5",
+    "condition": "C",
+    "budget": 8192,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=00a0e606-bbf6-47ab-a6c0-35108e7a4e4d: litellm.RateLimitError: RateLimitError: OpenAIException - Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+    "s2_ctx_tokens": 929,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 929,
+      "serialized_tokens": 929,
+      "budget": 8192,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "6d2c6c712649b52d6e6fc27bc35efa44e6dd53dd2a5540085e7ad01bdecfafb2",
+      "source_session": 1,
+      "source_events_hash": "2a1b874d3ac883270c52aa915f4bfc380eca4a024dbdc40d780d5d2517e5be09"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-2-257b6bef",
+    "condition": "C",
+    "budget": 2048,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 662,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 662,
+      "serialized_tokens": 662,
+      "budget": 2048,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "45175d5d296416379043aa3a5e112147170c84a819ea1e59d8e03978fd81d12f",
+      "source_session": 1,
+      "source_events_hash": "cbeae2c7c482b2a303d036d10f61fbc08f13143e8d2f70cad6fd329adf057228"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-2-890c0b01",
+    "condition": "C",
+    "budget": 1024,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 689,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 689,
+      "serialized_tokens": 689,
+      "budget": 1024,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "87e9ae20396b9f97c9357e5921ef3ce486cf20caf273a6517668fd3d5bcfe87d",
+      "source_session": 1,
+      "source_events_hash": "9c30bf09e64dad196018a13ac5a56e4303c26bfedf6b5344123b2c1986a243f2"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-2-d1cdeb30",
+    "condition": "C",
+    "budget": 4096,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 701,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 701,
+      "serialized_tokens": 701,
+      "budget": 4096,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "169c5926a9c5f44b48efc8721b73dac42d371be7f3373c2ef2a6fbeca2c998da",
+      "source_session": 1,
+      "source_events_hash": "723346ab5b5c1acd78e971fcb85319e583d4d7a9d12277b75c90825095735824"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-3-0fdd9494",
+    "condition": "C",
+    "budget": 2048,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 761,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 761,
+      "serialized_tokens": 761,
+      "budget": 2048,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "failures",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "abfbf0da94d3b2d8e87c013f628d9a192c06e6404fcd39ae15c8558a2095fdc4",
+      "source_session": 1,
+      "source_events_hash": "d46d3752929ef118bcf919eff2c339ae3ea1502d06c1bfb38d045e34492c7dc4"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-3-bbbd3486",
+    "condition": "C",
+    "budget": 8192,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 675,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 675,
+      "serialized_tokens": 675,
+      "budget": 8192,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "5d7de53400111a0a57306ac8f960920e48b8fdd943c42ea297e14c4a4bc324db",
+      "source_session": 1,
+      "source_events_hash": "80ec489931286f6951199b7e6aaab5aa923607a296eda16a73c10b1273f7495e"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-3-bf196c69",
+    "condition": "C",
+    "budget": 4096,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 786,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 2,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 786,
+      "serialized_tokens": 786,
+      "budget": 4096,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "d97249cef53008e2902dd7b8adc3e2cbda6929567dadb76c8678f4d5775513f8",
+      "source_session": 1,
+      "source_events_hash": "4b650e914427db757217b62f15ac24bd0315143d6f9613c4169c338837c32b60"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-3-d60061fd",
+    "condition": "C",
+    "budget": 1024,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 699,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 699,
+      "serialized_tokens": 699,
+      "budget": 1024,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "15954af9432ef50e86f59b94f7b03ac1b60c938cabb26085319735be6308afe5",
+      "source_session": 1,
+      "source_events_hash": "ef72928968abf221a2e80a8277a242c3c419b85a86052d1ae95afaab1df74a61"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-4-5591649e",
+    "condition": "C",
+    "budget": 1024,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 800,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 800,
+      "serialized_tokens": 800,
+      "budget": 1024,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "0629bad1b5275a421c056dfacc852cf12c34c4e7da32f84c1cad4e76d3ba11ab",
+      "source_session": 1,
+      "source_events_hash": "72e1074e21a072a5ee9554eecac455e6893c552ac3190b46a4d71be46a2d6204"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-4-58bd350a",
+    "condition": "C",
+    "budget": 8192,
+    "seed": 4,
+    "s1_visible_tests_passed": false,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 710,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 710,
+      "serialized_tokens": 710,
+      "budget": 8192,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "acb69cb6f9baf44ea3fb6982888455623e1e0a8cfd38ff7c390f8ab8eb78ca71",
+      "source_session": 1,
+      "source_events_hash": "5798818232590f6d1a65c9753787c4303acb1287916e7d880acf5f9cb9dced86"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-4-6c4cd743",
+    "condition": "C",
+    "budget": 2048,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 812,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 812,
+      "serialized_tokens": 812,
+      "budget": 2048,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "12e95b34d01fe72157fcdb176ceff5e74151700507dcaf778610584808ba0c09",
+      "source_session": 1,
+      "source_events_hash": "c2404025e24c55e2138b8934777ceb16a887f0132b2d9e25d1e73292604bd81a"
+    },
+    "s2_all_tests_passed": true,
+    "eval_tail": "",
+    "success": true
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-4-a31057f2",
+    "condition": "C",
+    "budget": 4096,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 694,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 694,
+      "serialized_tokens": 694,
+      "budget": 4096,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "397f13fcaefde8eddc6fd4c30445332d17a743897dcf3b5e1c944ba242929191",
+      "source_session": 1,
+      "source_events_hash": "9495b98837bd32a162b2157c170c5d266b89f11623dab17a2c8798ba776b5c1d"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-5-2da8ee1f",
+    "condition": "C",
+    "budget": 1024,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 834,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 834,
+      "serialized_tokens": 834,
+      "budget": 1024,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "9731e9501561c9025d682e96df64c3e9da12ebf3d40e4708140d09a4bb9634e3",
+      "source_session": 1,
+      "source_events_hash": "7a3c340d5b76a231bcb2448577c0c97343adb08507f0e0cb62efeaf6fce7aaf4"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-5-2fa11498",
+    "condition": "C",
+    "budget": 2048,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 712,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 712,
+      "serialized_tokens": 712,
+      "budget": 2048,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "b23faa9b944f265deeaa3fe2058a7da30d73a6502ff2e3de9b31a1eeba0a1a23",
+      "source_session": 1,
+      "source_events_hash": "4520051373e7fe0346a395c943af29d64a85eb10653de3e29e89da155e46a1ec"
+    },
+    "s2_all_tests_passed": true,
+    "eval_tail": "",
+    "success": true
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-5-8b87d6f8",
+    "condition": "C",
+    "budget": 8192,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 721,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 721,
+      "serialized_tokens": 721,
+      "budget": 8192,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "6c4e17d20e087309e52d8c72397afe1a62acef42f29e29d9b4621db65f23c6b6",
+      "source_session": 1,
+      "source_events_hash": "5e9915a6e8bd81529726b064a0d7fc42be026120380c8c627e4d05fabb322031"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "C-5-ace6fd93",
+    "condition": "C",
+    "budget": 4096,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 908,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "schema_version": "C-v0.1",
+      "extractor": {
+        "model": "nvidia/nemotron-3-ultra-550b-a55b",
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "max_tokens": 2048,
+        "prompt_version": "c-extraction-v1",
+        "transport_max_attempts": 3,
+        "transport_attempt_used": 1,
+        "recovery_telemetry": {
+          "attempts": [
+            {
+              "attempt": 1,
+              "parse_success": true,
+              "schema_valid": true
+            }
+          ],
+          "attempt_count": 1,
+          "first_attempt_parse_success": true,
+          "final_parse_success": true,
+          "final_schema_valid": true,
+          "recovery_mode": "bounded_parse_schema_recovery (AMD-002)"
+        }
+      },
+      "tokenizer": "cl100k_base",
+      "tokens_before_budget": 908,
+      "serialized_tokens": 908,
+      "budget": 4096,
+      "truncated": false,
+      "categories_present": [
+        "current_state",
+        "failures",
+        "decisions",
+        "tasks",
+        "dependencies",
+        "goals",
+        "facts",
+        "entities",
+        "events"
+      ],
+      "categories_truncated": [],
+      "context_hash": "556e518edc58d4b8a4767ba74b5c3f9a74afa7421e03f0260a7f960ec92c7516",
+      "source_session": 1,
+      "source_events_hash": "ef44c1d9203bc63a35f404976e5cb48a47e2182456996f6f7f8681746577609a"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-1-157bb9c9",
+    "condition": "D",
+    "budget": 1024,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 699,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 24,
+      "messages_kept": 6,
+      "truncation": "oldest-first",
+      "context_hash": "a8da0a09164aa15569087c919a6558c4bfa03561b4ecf0177fc35554e5ea3a0c",
+      "source_session": 1,
+      "source_events_hash": "48b163807bea595d384e2fbe71829ae3fc6345d7f03a3ba7267ab777a83b2016"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-1-8976bd7d",
+    "condition": "D",
+    "budget": 2048,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=70c1ca4e-272c-4086-baf5-57f80909bfbb: litellm.RateLimitError: RateLimitError: OpenAIException - Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+    "s2_ctx_tokens": 1560,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 45,
+      "messages_kept": 6,
+      "truncation": "oldest-first",
+      "context_hash": "ee8b8490d6dfe68e8f7251f89d21d7eb27ee220d2ff30a9b02e3b2963b90e95c",
+      "source_session": 1,
+      "source_events_hash": "7261b9137752b528220118b20a70528af27014cf52323c3e8e9ba3e623c9f70b"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "run_id": "D-1-983b7e10",
+    "s1_exists": true,
+    "s2_exists": false,
+    "incomplete": true
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-1-9e3d355e",
+    "condition": "D",
+    "budget": 4096,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 3402,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 27,
+      "messages_kept": 14,
+      "truncation": "oldest-first",
+      "context_hash": "13504c8872455fed9740d8c8777c9e0effbc948b322b05210f7eda0de7901e54",
+      "source_session": 1,
+      "source_events_hash": "4b8bd2d56a352a9a75ca0fc2de71c0af7979da8ae9fbf0120957ecadf03a45be"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-1-da7ba338",
+    "condition": "D",
+    "budget": 8192,
+    "seed": 1,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 6863,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 33,
+      "messages_kept": 23,
+      "truncation": "oldest-first",
+      "context_hash": "441ee746823847dd8ce60d1e7578338e4273dccf6aa05f41fe7e7da6c8c4908c",
+      "source_session": 1,
+      "source_events_hash": "e0790ce2627d126b9ae7008e2c45e71c50c666da4302d8c4474499cb02168a88"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-2-1cb35941",
+    "condition": "D",
+    "budget": 1024,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 1018,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 34,
+      "messages_kept": 5,
+      "truncation": "oldest-first",
+      "context_hash": "ca33f32bd4bdee4e684062a4dc6d5b543fff3f588c548427e537e5256391b8e8",
+      "source_session": 1,
+      "source_events_hash": "c3dc84cde6af8a09746be0988a15368e10828ac3b33396b8eb55a362f1d319da"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-2-44755927",
+    "condition": "D",
+    "budget": 8192,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 8028,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 40,
+      "messages_kept": 27,
+      "truncation": "oldest-first",
+      "context_hash": "92fe8067a9ff4060f61ee9c31c228d21120a0497afaf94342010bcd154e858fd",
+      "source_session": 1,
+      "source_events_hash": "b9ee8ddc919c06e6f484e1b45492ad29a91611d96349666596b8ac1ed8292bdf"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-2-49c432a4",
+    "condition": "D",
+    "budget": 2048,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 2043,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 25,
+      "messages_kept": 7,
+      "truncation": "oldest-first",
+      "context_hash": "b33c2264d81ae4e354a6e01b6b4ee1c4bd7d0db5efe7f07c86eec8b2eb3a1f97",
+      "source_session": 1,
+      "source_events_hash": "3ce442739fb7ac3ba9f2bb2075314d5e65cef5574af971872c99af80bc3b69a2"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-2-cfc3157e",
+    "condition": "D",
+    "budget": 4096,
+    "seed": 2,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 4084,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 31,
+      "messages_kept": 13,
+      "truncation": "oldest-first",
+      "context_hash": "961b5f81b34a29542589d5d3e486405c3952a7c82899cddc2983db3e9f34a615",
+      "source_session": 1,
+      "source_events_hash": "ee157e53a0b32b9478d9133c65938daa1c2d3684ec99fd517e96cd511772005a"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "run_id": "D-3-40fbc5b9",
+    "s1_exists": true,
+    "s2_exists": false,
+    "incomplete": true
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-3-5eef686a",
+    "condition": "D",
+    "budget": 4096,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 3940,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 34,
+      "messages_kept": 21,
+      "truncation": "oldest-first",
+      "context_hash": "7c82a6c170d10e00058a1b1584b3e0fc9292d92ede6b35e564aa75217ce8f9fc",
+      "source_session": 1,
+      "source_events_hash": "2544f5a29b8b096a177c616ed0528d503abe3f552bd09c5b239d80ab23e9cee6"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-3-61f885df",
+    "condition": "D",
+    "budget": 8192,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 8156,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 43,
+      "messages_kept": 27,
+      "truncation": "oldest-first",
+      "context_hash": "90657465a4d5abafec901b27fbc987953609c144276a849a9643face6f2d3ffa",
+      "source_session": 1,
+      "source_events_hash": "a20fcae6e82f6b1fdac5586d5c0e1ed2f6cdb65489d5b7e1cdd4c7cc1adf87f3"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-3-8788f093",
+    "condition": "D",
+    "budget": 1024,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 919,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 33,
+      "messages_kept": 5,
+      "truncation": "oldest-first",
+      "context_hash": "1133ad2ab2c4c6fa1caaef4cc68da1b760d7f9a27f1575226a4be923d27cc568",
+      "source_session": 1,
+      "source_events_hash": "1397e5fb5d180cf197f24d683d04bbef7bdb5d7719dd8c553645dbe596ed7524"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-3-a78a5652",
+    "condition": "D",
+    "budget": 2048,
+    "seed": 3,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 1962,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 24,
+      "messages_kept": 4,
+      "truncation": "oldest-first",
+      "context_hash": "b24ebd91364c4cd0f922d65d3e47f3c5e1fa401969f0eceac021dbc3550a0a40",
+      "source_session": 1,
+      "source_events_hash": "c8fc066ae0d8618bae7f3a0a4f551caa6b620babbf746a51fd2f18f099f2ac34"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-4-226e34b7",
+    "condition": "D",
+    "budget": 2048,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=593541ff-6339-47a0-9da0-ff5c10df17a4: litellm.RateLimitError: RateLimitError: OpenAIException - Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+    "s2_ctx_tokens": 1735,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 26,
+      "messages_kept": 8,
+      "truncation": "oldest-first",
+      "context_hash": "f450f2ee5a83d1d63838033d3f019d59cc9c28fcfee0baba31d06bead212485e",
+      "source_session": 1,
+      "source_events_hash": "0f7f204b657c881d99dbb0f9ea427e1db474b99a80797ad5c584e3ae0eeceb33"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-4-8736483d",
+    "condition": "D",
+    "budget": 1024,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 612,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 25,
+      "messages_kept": 5,
+      "truncation": "oldest-first",
+      "context_hash": "92fc371db99085ef0b75fe3e57c7b09cee339ba536ace13314de3e7d4f584d54",
+      "source_session": 1,
+      "source_events_hash": "632eda6a051f743d983b8fa2101d5695c3596b67854e1824479c8483ae523f3e"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-4-892e985d",
+    "condition": "D",
+    "budget": 4096,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 3924,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 26,
+      "messages_kept": 23,
+      "truncation": "oldest-first",
+      "context_hash": "4c05e25bc732fafaa8a92197a447f1e3910b80c8764d8569bb22fef06861110f",
+      "source_session": 1,
+      "source_events_hash": "cae7bf2775ee82d81e8c0d72447d3f62298944af82184f0a98f86ebddc1053eb"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-4-ec63ba1c",
+    "condition": "D",
+    "budget": 8192,
+    "seed": 4,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=97bf1a59-caba-43b9-ba84-c06b6402c782: litellm.RateLimitError: RateLimitError: OpenAIException - Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+    "s2_ctx_tokens": 7512,
+    "s2_ctx_truncated": false,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 20,
+      "messages_kept": 20,
+      "truncation": "oldest-first",
+      "context_hash": "8be54253048e09060b019000abdc01812a16dd3f00f061b7dcb75039744cc8fc",
+      "source_session": 1,
+      "source_events_hash": "053d73124ea59473271f35050af3ceaf3908012ec7f747d662fc0f98ecace727"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-5-455ee5e0",
+    "condition": "D",
+    "budget": 8192,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 8053,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 40,
+      "messages_kept": 39,
+      "truncation": "oldest-first",
+      "context_hash": "cac956b6cceaf68c604bb626bd6b27e8e5599b339d4207fc24e9e0493d64665b",
+      "source_session": 1,
+      "source_events_hash": "06a2a92ea978119c09890f5700f24bdce36812395061ef344efac1ea1438374e"
+    },
+    "s2_all_tests_passed": true,
+    "eval_tail": "",
+    "success": true
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-5-5506e3ce",
+    "condition": "D",
+    "budget": 2048,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 2009,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 28,
+      "messages_kept": 7,
+      "truncation": "oldest-first",
+      "context_hash": "ae2a48c4d6600d3fdeb57cb4d6fff5517f34c1290f5d0527cb062c370eef3670",
+      "source_session": 1,
+      "source_events_hash": "b4c3f7c190bb1f45cd19907476396e277f6d66cd60cf3dec9985c52a952579ae"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-5-71779422",
+    "condition": "D",
+    "budget": 1024,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": "ConversationRunError: Conversation run failed for id=2fd256ce-f763-4bf1-91b4-33bd6ba9336e: litellm.RateLimitError: RateLimitError: OpenAIException - Error code: 429 - {'status': 429, 'title': 'Too Many Requests'}",
+    "s2_ctx_tokens": 938,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 25,
+      "messages_kept": 4,
+      "truncation": "oldest-first",
+      "context_hash": "655376383f8a0095c87f4e705472fa023260ca910a5c34fa60c9c7b88df05496",
+      "source_session": 1,
+      "source_events_hash": "d5d4198dfa9b0d5f8a2e84f1d7c8c5f124cc57dbdccde6f5a4388b13aa2dfd7a"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  },
+  {
+    "benchmark": "schema_migration",
+    "run_id": "D-5-a1f89d2e",
+    "condition": "D",
+    "budget": 4096,
+    "seed": 5,
+    "s1_visible_tests_passed": true,
+    "s2_agent_error": null,
+    "s2_ctx_tokens": 4039,
+    "s2_ctx_truncated": true,
+    "s2_provenance": {
+      "tokenizer": "cl100k_base",
+      "messages_total": 32,
+      "messages_kept": 14,
+      "truncation": "oldest-first",
+      "context_hash": "5a1f90fef9c26fec8fdd491563a101a83dab4c04fd82dec4d063f84a3a884ed5",
+      "source_session": 1,
+      "source_events_hash": "de2095d458db0d4f24c2879736a85024ca375f2f3d6e4c5684217748b4b1e5c1"
+    },
+    "s2_all_tests_passed": false,
+    "eval_tail": "",
+    "success": false
+  }
+]
