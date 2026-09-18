@@ -58,6 +58,26 @@ GOLD: dict[str, dict] = {
              "value": "next", "match": "temporal"},
         ],
     },
+    "cache_policy": {
+        "facts": [
+            {"id": "V-cp-1", "type": "exact_value", "value": "300", "match": "word"},
+            {"id": "V-cp-2", "type": "exact_value", "value": "60", "match": "word"},
+            {"id": "N-cp-1", "type": "negative_instruction", "value": "cache TTL", "match": "negative"},
+        ],
+    },
+    "entity_relationship": {
+        "facts": [
+            {"id": "E-er-1", "type": "exact_identifier", "value": "invoice-service", "match": "exact"},
+            {"id": "V-er-1", "type": "exact_value", "value": "30", "match": "word"},
+        ],
+    },
+    "evolving_state": {
+        "facts": [
+            {"id": "V-es-1", "type": "exact_value", "value": "25", "match": "word"},
+            {"id": "V-es-2", "type": "exact_value", "value": "40", "match": "word"},
+            {"id": "T-es-1", "type": "temporal_scope", "value": "next", "match": "temporal"},
+        ],
+    },
 }
 
 # Ordered category list used for reporting (stable ordering).

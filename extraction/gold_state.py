@@ -71,6 +71,59 @@ GOLD_STATE: dict[str, dict] = {
         "dependencies": [{"id": "DEP-001", "description": "loader already supports env override"}],
         "current_state": {"active_work": "rate-limit mapping pending", "tests_status": "visible suite green"},
     },
+    "cache_policy": {
+        "schema_version": "C-v0.1",
+        "goals": [{"id": "G-001", "description": "finalize cache eviction policy exactly as decided"}],
+        "tasks": [{"id": "TASK-001", "description": "expose EVICT_EVERY and cache TTL constants", "status": "pending", "files": ["app/cache.py"]}],
+        "decisions": [
+            {"id": "DEC-001", "decision": "cache TTL is 300 seconds; eviction sweep runs every 60 seconds", "reason": "capacity decision", "status": "active"},
+        ],
+        "entities": [],
+        "facts": [
+            {"id": "F-001", "fact": "cache TTL is 300"},
+            {"id": "F-002", "fact": "eviction interval is 60"},
+        ],
+        "events": [],
+        "failures": [],
+        "dependencies": [{"id": "DEP-001", "description": "existing Cache class"}],
+        "current_state": {"active_work": "eviction policy pending", "tests_status": "visible suite green"},
+    },
+    "entity_relationship": {
+        "schema_version": "C-v0.1",
+        "goals": [{"id": "G-001", "description": "expose billing window decided earlier"}],
+        "tasks": [{"id": "TASK-001", "description": "add BILLING_WINDOW_DAYS constant", "status": "pending", "files": ["app/ledger.py"]}],
+        "decisions": [
+            {"id": "DEC-001", "decision": "billing window is 30 days for invoice-service", "reason": "accounting decision", "status": "active"},
+        ],
+        "entities": [
+            {"id": "E-001", "name": "invoice-service", "type": "account", "description": "ledger entity"},
+        ],
+        "facts": [
+            {"id": "F-001", "fact": "billing window is 30"},
+            {"id": "F-002", "fact": "the affected entity is invoice-service"},
+        ],
+        "events": [],
+        "failures": [],
+        "dependencies": [{"id": "DEP-001", "description": "ENRIES has per-entry days_outstanding"}],
+        "current_state": {"active_work": "billing-window constant pending", "tests_status": "visible suite green"},
+    },
+    "evolving_state": {
+        "schema_version": "C-v0.1",
+        "goals": [{"id": "G-001", "description": "apply the policy rate change exactly as decided"}],
+        "tasks": [{"id": "TASK-001", "description": "raise PENALTY_RATE as decided", "status": "pending", "files": ["app/pricing.py", "tests/test_pricing.py"]}],
+        "decisions": [
+            {"id": "DEC-001", "decision": "PENALTY_RATE changes from 25 to 40", "reason": "pricing policy decision", "status": "active"},
+        ],
+        "entities": [],
+        "facts": [
+            {"id": "F-001", "fact": "old rate was 25"},
+            {"id": "F-002", "fact": "new rate is 40"},
+        ],
+        "events": [],
+        "failures": [],
+        "dependencies": [],
+        "current_state": {"active_work": "rate change pending", "tests_status": "visible suite green"},
+    },
 }
 
 
@@ -78,6 +131,15 @@ def gold_state(benchmark: str) -> dict:
     if benchmark not in GOLD_STATE:
         raise KeyError(f"no gold state for {benchmark}")
     return GOLD_STATE[benchmark]
+
+
+def empty_state() -> dict:
+    return {
+        "schema_version": "C-v0.1",
+        "goals": [], "tasks": [], "decisions": [], "entities": [],
+        "facts": [], "events": [], "failures": [], "dependencies": [],
+        "current_state": {},
+    }
 
 
 def gold_to_c_fidelity(benchmark: str, serialized: str) -> dict:
