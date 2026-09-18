@@ -139,14 +139,48 @@ def main() -> int:
         ),
     }
     summary_file = out_root / "summary.json"
-    report = json.loads(summary_file.read_text()) if summary_file.exists() else {"runs": []}
-    report["runs"].append(entry)
-    summary_file.write_text(json.dumps(report, indent=2, default=str))
+    _upsert_summary(summary_file, entry)
     print(json.dumps(entry, indent=2, default=str), flush=True)
 
     shutil.rmtree(seed, ignore_errors=True)
     shutil.rmtree(workspace, ignore_errors=True)
     return 0 if entry["success"] else 1
+
+
+def _upsert_summary(summary_file: Path, entry: dict) -> None:
+    """Atomically upsert a cell entry keyed by (condition,budget,seed)."""
+    import os as _os
+    import time as _time
+
+    deadline = _time.time() + 60
+    delay = 0.25
+    tmpfile = summary_file.with_suffix(f".tmp.{_os.getpid()}")
+    while True:
+        try:
+            existing = {}
+            if summary_file.exists():
+                txt = summary_file.read_text(encoding="utf-8")
+                existing = json.loads(txt) if txt.strip() else {"runs": []}
+            runs = existing.get("runs") or []
+            runs = [
+                r for r in runs
+                if not (
+                    r.get("condition") == entry["condition"]
+                    and r.get("budget") == entry["budget"]
+                    and r.get("seed") == entry["seed"]
+                )
+            ]
+            runs.append(entry)
+            existing["runs"] = runs
+            with open(tmpfile, "w", encoding="utf-8") as tf:
+                json.dump(existing, tf, indent=2)
+            _os.replace(tmpfile, summary_file)
+            return
+        except (OSError, PermissionError):
+            if _time.time() > deadline:
+                raise
+            _time.sleep(delay)
+            delay = min(delay * 2, 2.0)
 
 
 if __name__ == "__main__":
