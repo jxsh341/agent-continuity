@@ -32,7 +32,7 @@
     "remote": "https://github.com/jxsh341/agent-continuity.git",
     "baseline_commit": "d7842b9a72243843e545712ba916432e3d874c77"
   },
-  "agent_model": "openai/meta/muse-glimmer-30b (NVIDIA NIM endpoint)",
+  "agent_model": "meta/muse-glimmer-30b (NVIDIA NIM endpoint; no provider prefix)",
   "fastapi": {
     "library_version_installed": "0.141.1",
     "commit": "49033471594ea5d99a80abdf1043231b7791ee49",
