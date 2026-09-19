@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class ModelConfig:
-    model: str = "gpt-5.5"
+    model: str = "meta/muse-glimmer-30b"
     api_key: str | None = None
     base_url: str | None = None
     # Hard cap on agent loop iterations per session. Protects run time

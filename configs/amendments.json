@@ -28,5 +28,17 @@
                                           "benchmarks",
                                           "baselines"
                                       ]
+    },
+    {
+        "id":  "AMD-003",
+        "date":  "2026-09-19",
+        "author": "infra name migration",
+        "scope":  "configs/framework_pin.json + agent/config.py default model string",
+        "summary":  "The NVIDIA NIM endpoint started returning 404 for 'openai/meta/muse-glimmer-30b' (prefixed) while still accepting the previously-available 'meta/muse-glimmer-30b'. The experiment series used the prefixed form; the pilot record d going forward uses the unprefixed form. They're names of the same weights on the same endpoint, with no effect on behavior — verified by direct OpenAI-compatible calls. This is name normalization, not a model swap.",
+        "frozen_elements_untouched":  [
+                                          "model weights (same deployed ID)",
+                                          "benchmarks, prompts, conditions",
+                                          "extractor + C schema + serializer"
+                                      ]
     }
 ]
