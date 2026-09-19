@@ -1,0 +1,13 @@
+TOTAl cells: 72
+
+Endpoint health breakdown:
+  INFRA_404: 72
+
+Healthy cells by condition/benchmark (only HEALTHY cells count toward sci outcome):
+  A: healthy=0 success=0 failure=0
+  B: healthy=0 success=0 failure=0
+  C: healthy=0 success=0 failure=0
+  D: healthy=0 success=0 failure=0
+
+summary.json discrepancies (rows missing from summary):
+  none
