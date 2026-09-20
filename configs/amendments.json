@@ -30,11 +30,11 @@
                                       ]
     },
     {
-        "id":  "AMD-003",
+        "id":  "AMD-004",
         "date":  "2026-09-19",
-        "author": "infra name migration",
-        "scope":  "configs/framework_pin.json + agent/config.py default model string",
-        "summary":  "The NVIDIA NIM endpoint started returning 404 for 'openai/meta/muse-glimmer-30b' (prefixed) while still accepting the previously-available 'meta/muse-glimmer-30b'. The experiment series used the prefixed form; the pilot record d going forward uses the unprefixed form. They're names of the same weights on the same endpoint, with no effect on behavior — verified by direct OpenAI-compatible calls. This is name normalization, not a model swap.",
+        "author": "correction of AMD-003 (misdiagnosis)",
+        "scope":  "agent/config.py default model string (restored) + framework_pin.json",
+        "summary":  "AMD-003 claimed the NIM endpoint dropped the openai/ prefix. That diagnosis was wrong: it was based on raw OpenAI-client probes, which send the model string verbatim (so a prefixed name always 404s in such probes regardless of endpoint health). The SDK dispatches via litellm, which STRIPS the openai/ prefix and routes as custom_llm_provider=openai; the endpoint receives the bare name. The bare 'meta/...' string instead makes litellm route to its built-in Meta provider (MetaException 404) - the actual cause of the Phase 4 pilot failures. Correct operating string: 'openai/meta/muse-glimmer-30b'. All Stage 3 results used this form. Residual lesson: probe the endpoint through the same call path the harness uses (litellm), not a different client.",
         "frozen_elements_untouched":  [
                                           "model weights (same deployed ID)",
                                           "benchmarks, prompts, conditions",
