@@ -1,13 +1,18 @@
-TOTAl cells: 72
+TOTAl cells: 76
 
 Endpoint health breakdown:
-  INFRA_404: 72
+  OK: 43
+  MISSING_FILES: 3
+  INFRA_404: 30
 
 Healthy cells by condition/benchmark (only HEALTHY cells count toward sci outcome):
-  A: healthy=0 success=0 failure=0
-  B: healthy=0 success=0 failure=0
-  C: healthy=0 success=0 failure=0
-  D: healthy=0 success=0 failure=0
+  A: healthy=8 success=3 failure=5
+  B: healthy=15 success=9 failure=6
+  C: healthy=9 success=5 failure=4
+  D: healthy=11 success=6 failure=5
 
 summary.json discrepancies (rows missing from summary):
-  none
+  ('fastapi', 'A-1-7862b94b', 'not in summary.json')
+  ('fastapi', 'B-1-5c9d85a0', 'not in summary.json')
+  ('fastapi', 'B-2-dadb969e', 'not in summary.json')
+  ('evolving_state', 'A-3-1caab885', 'not in summary.json')
