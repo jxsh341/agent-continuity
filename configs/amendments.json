@@ -32,13 +32,27 @@
     {
         "id":  "AMD-004",
         "date":  "2026-09-19",
-        "author": "correction of AMD-003 (misdiagnosis)",
+        "author":  "correction of AMD-003 (misdiagnosis)",
         "scope":  "agent/config.py default model string (restored) + framework_pin.json",
-        "summary":  "AMD-003 claimed the NIM endpoint dropped the openai/ prefix. That diagnosis was wrong: it was based on raw OpenAI-client probes, which send the model string verbatim (so a prefixed name always 404s in such probes regardless of endpoint health). The SDK dispatches via litellm, which STRIPS the openai/ prefix and routes as custom_llm_provider=openai; the endpoint receives the bare name. The bare 'meta/...' string instead makes litellm route to its built-in Meta provider (MetaException 404) - the actual cause of the Phase 4 pilot failures. Correct operating string: 'openai/meta/muse-glimmer-30b'. All Stage 3 results used this form. Residual lesson: probe the endpoint through the same call path the harness uses (litellm), not a different client.",
+        "summary":  "AMD-003 claimed the NIM endpoint dropped the openai/ prefix. That diagnosis was wrong: it was based on raw OpenAI-client probes, which send the model string verbatim (so a prefixed name always 404s in such probes regardless of endpoint health). The SDK dispatches via litellm, which STRIPS the openai/ prefix and routes as custom_llm_provider=openai; the endpoint receives the bare name. The bare \u0027meta/...\u0027 string instead makes litellm route to its built-in Meta provider (MetaException 404) - the actual cause of the Phase 4 pilot failures. Correct operating string: \u0027openai/meta/muse-glimmer-30b\u0027. All Stage 3 results used this form. Residual lesson: probe the endpoint through the same call path the harness uses (litellm), not a different client.",
         "frozen_elements_untouched":  [
                                           "model weights (same deployed ID)",
                                           "benchmarks, prompts, conditions",
                                           "extractor + C schema + serializer"
+                                      ]
+    },
+    {
+        "id":  "AMD-005",
+        "date":  "2026-09-21",
+        "scope":  "scripts/run_stage1_cell.py + scripts/c_oracle_ablation.py + matrix launchers",
+        "summary":  "Fail-closed provider classification (the Phase 4 pilot lesson): cells whose S1/S2 agent error is a provider failure (404/timeout/auth/503/429) are marked INFRA_FAILURE_PROVIDER, do NOT receive a ledger row (so they cannot enter any scientific denominator and are not counted as condition failures), and are re-queued by the launcher up to 3 times before being written as permanently excluded infra rows. Exit codes: 0=success, 1=valid task failure (endpoint worked, agent failed), 3=provider failure. No changes to C schema/prompt/serializer, B, benchmarks, agent model, budgets, or evaluation.",
+        "frozen_elements_untouched":  [
+                                          "C-v0.1",
+                                          "serializer",
+                                          "benchmarks",
+                                          "agent model",
+                                          "evaluation",
+                                          "Stage 3 dataset"
                                       ]
     }
 ]

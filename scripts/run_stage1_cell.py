@@ -113,7 +113,29 @@ def main() -> int:
     )
 
     run_dir = out_root / summary["run_id"]
+    s1d = json.loads((run_dir / "session_1.json").read_text())
     s2 = json.loads((run_dir / "session_2.json").read_text())
+
+    # AMD-005: fail closed on provider errors. A provider failure is NOT a
+    # condition outcome: the cell gets no ledger row (excluded from every
+    # scientific denominator) and the launcher re-queues it.
+    provider_err = classify_provider_error(
+        s2["agent_error"] or s1d.get("agent_error")
+    )
+    if provider_err:
+        _log_infra(out_root, {
+            "run_id": summary["run_id"],
+            "benchmark": a.benchmark,
+            "condition": a.condition,
+            "budget": a.budget,
+            "seed": a.seed,
+            "classification": provider_err,
+            "detail": (s2["agent_error"] or s1d.get("agent_error"))[:300],
+        })
+        shutil.rmtree(seed, ignore_errors=True)
+        shutil.rmtree(workspace, ignore_errors=True)
+        return 3
+
     # Fact-fidelity table for forensic analysis
     ctx_text = s2["context_artifact"]["text"]
     fact_report = {f["id"]: bool(f["check"](ctx_text)) for f in bench.CRITICAL_FACTS}
@@ -125,9 +147,7 @@ def main() -> int:
         "budget": a.budget,
         "seed": a.seed,
         "experiment_commit": experiment_commit,
-        "s1_visible_tests_passed": json.loads(
-            (run_dir / "session_1.json").read_text()
-        )["evaluation"]["passed"],
+        "s1_visible_tests_passed": s1d["evaluation"]["passed"],
         "s2_all_tests_passed": s2["evaluation"]["passed"],
         "decision_leaked_to_repo": leaked.get("decision_leaked_to_repo", False),
         "fact_fidelity": fact_report,
@@ -145,6 +165,34 @@ def main() -> int:
     shutil.rmtree(seed, ignore_errors=True)
     shutil.rmtree(workspace, ignore_errors=True)
     return 0 if entry["success"] else 1
+
+
+def classify_provider_error(err: str | None) -> str | None:
+    """AMD-005: provider-side failures are infrastructure, not condition
+    outcomes. 404 (endpoint/model routing), timeouts, auth, overload, and
+    rate limits all mean the cell was not scientifically evaluable."""
+    if not err:
+        return None
+    s = str(err)
+    if "NotFoundError" in s or "404" in s:
+        return "INFRA_FAILURE_PROVIDER"
+    if "timeout" in s.lower() or "Timeout" in s:
+        return "INFRA_FAILURE_PROVIDER"
+    if "401" in s or "authentication" in s.lower() or "credentials" in s.lower():
+        return "INFRA_FAILURE_PROVIDER"
+    if "503" in s or "overload" in s.lower() or "Service Unavailable" in s:
+        return "INFRA_FAILURE_PROVIDER"
+    if "429" in s or "RateLimit" in s:
+        return "INFRA_FAILURE_PROVIDER"
+    return None
+
+
+def _log_infra(out_root: Path, record: dict) -> None:
+    """Append to the infra ledger (accounting only; excluded from science)."""
+    infra_file = out_root / "infra.jsonl"
+    with open(infra_file, "a", encoding="utf-8") as f:
+        f.write(json.dumps(record, default=str) + "\n")
+    print(json.dumps(record, indent=2, default=str), flush=True)
 
 
 def _upsert_summary(summary_file: Path, entry: dict) -> None:
